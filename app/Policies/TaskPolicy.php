@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\Task;
+use App\Models\User;
+
+class TaskPolicy
+{
+    /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        //
+    }
+
+    /**
+     * タスクを表示できるか
+     */
+    public function view(User $user, Task $task): bool
+    {
+        return $task->user_id === $user->id;
+    }
+
+    /**
+     * Determine whether the user can create models.
+     */
+    public function create(User $user): bool
+    {
+        //
+    }
+
+    /**
+     * タスクを更新できるか
+     */
+    public function update(User $user, Task $task): bool
+    {
+        return $task->user_id === $user->id;
+    }
+
+    /**
+     * タスクを削除できるか
+     */
+    public function delete(User $user, Task $task): bool
+    {
+        return $task->user_id === $user->id;
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     */
+    public function restore(User $user, Task $task): bool
+    {
+        //
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     */
+    public function forceDelete(User $user, Task $task): bool
+    {
+        //
+    }
+}
